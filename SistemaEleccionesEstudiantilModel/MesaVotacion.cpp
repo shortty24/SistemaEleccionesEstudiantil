@@ -1,7 +1,8 @@
 #include "MesaVotacion.h"
 
-MesaVotacion::MesaVotacion() {
-}
+using namespace SistemaEleccionesEstudiantilModel;
+/*MesaVotacion::MesaVotacion() {
+}*/
 
 MesaVotacion::MesaVotacion(int codigo, int nroMesa, int nroAula, List<Alumno^>^ objListaElectores, List<Profesor^>^ objListaMiembrosMesa) {
 	this->codigo = codigo;

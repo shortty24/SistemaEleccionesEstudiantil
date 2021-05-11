@@ -1,15 +1,19 @@
 #pragma once
 
-using namespace System;
+namespace SistemaEleccionesEstudiantilModel{
 
-public ref class Persona {
-protected:
-	String^ objNombre;
-	String^ objApellidoPaterno;
-	String^ objApellidoMaterno;
-	String^ objGenero;
+	using namespace System;
 
-public:
-	Persona();
-	Persona(String^ objNombre, String^ objApellidoPaterno, String^ objApellidoMaterno, String^ objGenero);
-};
+	public ref class Persona {
+	protected:
+		String^ objNombre;
+		String^ objApellidoPaterno;
+		String^ objApellidoMaterno;
+		String^ objGenero;
+
+	public:
+		Persona();
+		Persona(String^ objNombre, String^ objApellidoPaterno, String^ objApellidoMaterno, String^ objGenero);
+
+	};
+}

@@ -20,11 +20,12 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{E16B7914-B9FE-4B64-A7F0-005C4B4813D1}</ProjectGuid>
+    <ProjectGuid>{35FAAF91-C166-4F3A-B14A-D0F1B07C1929}</ProjectGuid>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>SistemaEleccionesEstudiantilModel</RootNamespace>
+    <RootNamespace>A</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>SistemaEleccionesEstudiantilController</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -111,22 +112,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Alumno.h" />
-    <ClInclude Include="ListaElectoral.h" />
-    <ClInclude Include="MesaVotacion.h" />
-    <ClInclude Include="PartidoPolitico.h" />
-    <ClInclude Include="Persona.h" />
-    <ClInclude Include="Profesor.h" />
-    <ClInclude Include="Voto.h" />
+    <ProjectReference Include="..\SistemaEleccionesEstudiantilModel\SistemaEleccionesEstudiantilModel.vcxproj">
+      <Project>{e16b7914-b9fe-4b64-a7f0-005c4b4813d1}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Alumno.cpp" />
-    <ClCompile Include="ListaElectoral.cpp" />
-    <ClCompile Include="MesaVotacion.cpp" />
-    <ClCompile Include="PartidoPolitico.cpp" />
-    <ClCompile Include="Persona.cpp" />
-    <ClCompile Include="Profesor.cpp" />
-    <ClCompile Include="Voto.cpp" />
+    <ClInclude Include="PartidoPoliticoController.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PartidoPoliticoController.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
