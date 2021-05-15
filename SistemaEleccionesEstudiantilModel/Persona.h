@@ -5,15 +5,15 @@ namespace SistemaEleccionesEstudiantilModel{
 	using namespace System;
 
 	public ref class Persona {
-	protected:
-		String^ objNombre;
-		String^ objApellidoPaterno;
-		String^ objApellidoMaterno;
-		String^ objGenero;
+		public:
+			String^ nombre;
+			String^ apellidoPaterno;
+			String^ apellidoMaterno;
+			String^ genero;
 
-	public:
-		Persona();
-		Persona(String^ objNombre, String^ objApellidoPaterno, String^ objApellidoMaterno, String^ objGenero);
+		public:
+			//Persona();
+			Persona(String^ nombre, String^ apellidoPaterno, String^ apellidoMaterno, String^ genero);
 
 	};
 }

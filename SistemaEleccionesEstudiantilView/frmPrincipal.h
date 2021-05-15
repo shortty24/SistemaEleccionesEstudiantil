@@ -1,5 +1,7 @@
 #pragma once
 
+#include "frmMantPartidosPoliticos.h"
+
 namespace SistemaEleccionesEstudiantilView {
 
 	using namespace System;
@@ -70,7 +72,7 @@ namespace SistemaEleccionesEstudiantilView {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(857, 24);
+			this->menuStrip1->Size = System::Drawing::Size(673, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -93,25 +95,27 @@ namespace SistemaEleccionesEstudiantilView {
 			// partidosPolíticosToolStripMenuItem
 			// 
 			this->partidosPolíticosToolStripMenuItem->Name = L"partidosPolíticosToolStripMenuItem";
-			this->partidosPolíticosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->partidosPolíticosToolStripMenuItem->Size = System::Drawing::Size(165, 22);
 			this->partidosPolíticosToolStripMenuItem->Text = L"Partidos Políticos";
+			this->partidosPolíticosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::partidosPolíticosToolStripMenuItem_Click);
 			// 
 			// listaElectoralToolStripMenuItem
 			// 
 			this->listaElectoralToolStripMenuItem->Name = L"listaElectoralToolStripMenuItem";
-			this->listaElectoralToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->listaElectoralToolStripMenuItem->Size = System::Drawing::Size(165, 22);
 			this->listaElectoralToolStripMenuItem->Text = L"Listas Electorales";
 			// 
 			// frmPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(857, 558);
+			this->ClientSize = System::Drawing::Size(673, 586);
 			this->Controls->Add(this->menuStrip1);
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"frmPrincipal";
-			this->Text = L"Sistema de Elecciones - Mi Colegio";
+			this->Text = L" Sistema de Elecciones - Mi Colegio";
+			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -119,5 +123,15 @@ namespace SistemaEleccionesEstudiantilView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void partidosPolíticosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		/*El constructor es el que le da vida, pues de no hacerlo sería como declarar 'int a;' */
+		frmMantPartidosPoliticos^ ventanaMantPartidosPoliticos = gcnew frmMantPartidosPoliticos();
+
+		ventanaMantPartidosPoliticos->MdiParent = this; //this: permite representar a la misma clase
+		ventanaMantPartidosPoliticos->Show();
+	}
+private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

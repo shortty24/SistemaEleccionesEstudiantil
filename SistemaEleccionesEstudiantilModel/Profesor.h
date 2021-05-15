@@ -4,14 +4,13 @@
 namespace SistemaEleccionesEstudiantilModel {
 
 	public ref class Profesor :public Persona {
-	private:
-		int codigo;
-		String^ objPerfil;
+		public:
+			String^ codigo;
+			String^ perfil;
 
-	public:
-		//Profesor();
+		public:
+			//Profesor();
 
-		Profesor(int codigo, String^ objPerfi);
-		
+			Profesor(String^ codigo, String^ perfi);
 	};
 }

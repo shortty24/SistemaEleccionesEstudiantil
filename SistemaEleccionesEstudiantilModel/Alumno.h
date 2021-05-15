@@ -6,14 +6,15 @@ namespace SistemaEleccionesEstudiantilModel {
 	using namespace System;
 
 	public ref class Alumno : public Persona {
-	private:
-		int codigo;
+	public:
+		String^ codigo;
 		int grado;
-		char seccion;
-		String^ objNivel;
+		String^ seccion;
+		String^ nivel;
 	 
 	public:
 		//Alumno();
-		Alumno(int codigo, int grado, char seccion, String^ objNivel);
+		Alumno(String^ codigo, String^nombre, String^ apellidoPaterno,String^ objApellidoMaterno, String^ genero,int grado, String^ seccion, String^ nivel);
+
 	};
 }

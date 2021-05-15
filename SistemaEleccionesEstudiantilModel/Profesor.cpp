@@ -2,7 +2,7 @@
 
 using namespace SistemaEleccionesEstudiantilModel;
 
-Profesor::Profesor(int codigo, String^ objPerfi) {
+Profesor::Profesor(String^ codigo, String^ objPerfi) :Persona(nombre, apellidoPaterno, apellidoMaterno, genero) {
 	this->codigo = codigo;
-	this->objPerfil = objPerfil;
+	this->perfil = perfil;
 }

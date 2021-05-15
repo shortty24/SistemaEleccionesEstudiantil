@@ -9,6 +9,11 @@ namespace SistemaEleccionesEstudiantilController {
 		List<PartidoPolitico^>^ listaPartidosPoliticos;
 	
 	public:
+		/*Propósito del constructor: Crear espacio de memorioa o inicializar los atributos*/
 		PartidoPoliticoController();
+		void CargarPartidosDesdeArchivo();
+		List<Alumno^>^ BuscarAlumnosPartidoPolitico(int codigoPartido);
+		int ObtenerCantidadPartidos();
+		PartidoPolitico^ ObtenerPartidoLista(int indice); 
 	};
-}
+} 

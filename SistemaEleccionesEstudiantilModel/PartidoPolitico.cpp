@@ -2,11 +2,11 @@
 
 using namespace SistemaEleccionesEstudiantilModel;
 
-PartidoPolitico::PartidoPolitico(int codigo, String^ objNombre, char simbolo, String^ objFechaFundacion, List<Alumno^>^ objListaAlumnos) {
+PartidoPolitico::PartidoPolitico(int codigo, String^ nombre, String^ simbolo, String^ fechaFundacion) {
 	this->codigo = codigo;
-	this->objNombre = objNombre;
+	this->nombre = nombre;
 	this->simbolo = simbolo;
-	this->objFechaFundacion = objFechaFundacion;
-	this->objListaAlumnos = objListaAlumnos;
-
+	this->fechaFundacion = fechaFundacion;
+	this->listaAlumnos = gcnew List<Alumno^>();
+	
 }

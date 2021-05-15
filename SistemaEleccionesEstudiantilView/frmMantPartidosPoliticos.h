@@ -8,6 +8,8 @@ namespace SistemaEleccionesEstudiantilView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaEleccionesEstudiantilController;
+	using namespace SistemaEleccionesEstudiantilModel;
 
 	/// <summary>
 	/// Summary for frmMantPartidosPoliticos
@@ -62,9 +64,9 @@ namespace SistemaEleccionesEstudiantilView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -82,28 +84,12 @@ namespace SistemaEleccionesEstudiantilView {
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(171, 130);
+			this->groupBox1->Location = System::Drawing::Point(12, 12);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(488, 129);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Criterios de Búsqueda";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(58, 50);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(44, 13);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Nombre";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(108, 47);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(159, 20);
-			this->textBox1->TabIndex = 1;
 			// 
 			// button1
 			// 
@@ -114,6 +100,22 @@ namespace SistemaEleccionesEstudiantilView {
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(108, 47);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(159, 20);
+			this->textBox1->TabIndex = 1;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(58, 50);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(44, 13);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Nombre";
+			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -121,7 +123,7 @@ namespace SistemaEleccionesEstudiantilView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4
 			});
-			this->dataGridView1->Location = System::Drawing::Point(171, 280);
+			this->dataGridView1->Location = System::Drawing::Point(12, 162);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->Size = System::Drawing::Size(488, 231);
 			this->dataGridView1->TabIndex = 3;
@@ -148,7 +150,7 @@ namespace SistemaEleccionesEstudiantilView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(208, 534);
+			this->button2->Location = System::Drawing::Point(49, 416);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 4;
@@ -157,7 +159,7 @@ namespace SistemaEleccionesEstudiantilView {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(363, 534);
+			this->button3->Location = System::Drawing::Point(204, 416);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
 			this->button3->TabIndex = 5;
@@ -166,7 +168,7 @@ namespace SistemaEleccionesEstudiantilView {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(519, 534);
+			this->button4->Location = System::Drawing::Point(360, 416);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(75, 23);
 			this->button4->TabIndex = 6;
@@ -178,7 +180,7 @@ namespace SistemaEleccionesEstudiantilView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(852, 597);
+			this->ClientSize = System::Drawing::Size(519, 499);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
@@ -195,6 +197,18 @@ namespace SistemaEleccionesEstudiantilView {
 		}
 #pragma endregion
 	private: System::Void frmMantPartidosPoliticos_Load(System::Object^ sender, System::EventArgs^ e) {
+		PartidoPoliticoController^ gestorPartidoPolitico = gcnew PartidoPoliticoController();
+		gestorPartidoPolitico->CargarPartidosDesdeArchivo();
+		this->dataGridView1->Rows->Clear();
+		for (int i = 0; i < gestorPartidoPolitico->ObtenerCantidadPartidos(); i++) {
+			PartidoPolitico^ objPartido = gestorPartidoPolitico->ObtenerPartidoLista(i);
+			array<String^>^ fila = gcnew array<String^>(4);
+			fila[0] = Convert::ToString(objPartido->codigo);
+			fila[1] = objPartido->nombre;
+			fila[2] = objPartido->simbolo;
+			fila[3] = objPartido->fechaFundacion;
+			this->dataGridView1->Rows->Add(fila);
+		}
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
