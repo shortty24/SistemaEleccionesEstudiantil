@@ -11,6 +11,6 @@ namespace SistemaEleccionesEstudiantilModel {
 		public:
 			//Profesor();
 
-			Profesor(String^ codigo, String^ perfi);
+			Profesor(String^ codigo, String^ perfil);
 	};
 }
