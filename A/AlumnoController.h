@@ -10,6 +10,6 @@ namespace SistemaEleccionesEstudiantilController {
 		List<Alumno^>^ listaAlumnos;
 	public:
 		AlumnoController();
-		Alumno^ buscarAlumno(String^ coodigoAlumno);
+		Alumno^ buscarAlumno(String^ codigoAlumno);
 	}; 
 }

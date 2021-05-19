@@ -7,7 +7,7 @@ AlumnoController::AlumnoController() {
 	this->listaAlumnos = gcnew List<Alumno^>();
 }
 
-Alumno^ AlumnoController::buscarAlumno(String^ coodigoAlumno) {
+Alumno^ AlumnoController::buscarAlumno(String^ codigoAlumno) {
 	Alumno^ objAlumnoEncontrado; 
 	array<String^>^ lineas = File::ReadAllLines("alumnos.txt");
 	
@@ -22,7 +22,7 @@ Alumno^ AlumnoController::buscarAlumno(String^ coodigoAlumno) {
 		int grado = Convert::ToInt32(palabras[5]);
 		String^ seccion = palabras[6];
 		String^ nivel = palabras[7];
-		if (codigo == coodigoAlumno) {
+		if (codigo == codigoAlumno) {
 			objAlumnoEncontrado = gcnew Alumno(codigo, nombre, apellidoPaterno, apellidoMaterno, genero, grado, seccion, nivel);
 			break;
 		}
