@@ -8,5 +8,12 @@ PartidoPolitico::PartidoPolitico(int codigo, String^ nombre, String^ simbolo, St
 	this->simbolo = simbolo;
 	this->fechaFundacion = fechaFundacion;
 	this->listaAlumnos = gcnew List<Alumno^>();
-	
+}
+
+PartidoPolitico::PartidoPolitico(int codigo, String^ nombre, String^ simbolo, String^ fechaFundacion, List<Alumno^>^ listaMiembros) {
+	this->codigo = codigo;
+	this->nombre = nombre;
+	this->simbolo = simbolo;
+	this->fechaFundacion = fechaFundacion;
+	this->listaAlumnos = listaMiembros;
 }

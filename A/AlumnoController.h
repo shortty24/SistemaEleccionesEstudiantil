@@ -11,5 +11,7 @@ namespace SistemaEleccionesEstudiantilController {
 	public:
 		AlumnoController();
 		Alumno^ buscarAlumno(String^ codigoAlumno);
+		List<Alumno^>^ buscarAlumnosxNivelxGradoxSeccion(String^ nivel, int grado, String^ seccion);
+		int verificarSiAlumnoPertenecePartidoPolitico(String^ codigoALumno);
 	}; 
 }

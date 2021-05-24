@@ -128,12 +128,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="frmBuscarAlumnos.cpp" />
+    <ClCompile Include="frmEditarPartidoPolitico.cpp" />
     <ClCompile Include="frmMantPartidosPoliticos.cpp" />
     <ClCompile Include="frmNuevoPartidoPolitico.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frmBuscarAlumnos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEditarPartidoPolitico.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmMantPartidosPoliticos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -145,8 +153,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmBuscarAlumnos.resx">
+      <DependentUpon>frmBuscarAlumnos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarPartidoPolitico.resx">
+      <DependentUpon>frmEditarPartidoPolitico.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMantPartidosPoliticos.resx">
       <DependentUpon>frmMantPartidosPoliticos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoPartidoPolitico.resx">
+      <DependentUpon>frmNuevoPartidoPolitico.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>

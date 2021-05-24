@@ -19,5 +19,6 @@ namespace SistemaEleccionesEstudiantilModel {
 		public:
 			//PartidoPolitico(); //Todas las clases deben tener un método constructor que se llame igual que la clase
 			PartidoPolitico(int codigo, String^ nombre, String^ simbolo, String^ fechaFundacion);
+			PartidoPolitico(int codigo, String^ nombre, String^ simbolo, String^ fechaFundacion, List<Alumno^>^ listaMiembros);
 	};
 }

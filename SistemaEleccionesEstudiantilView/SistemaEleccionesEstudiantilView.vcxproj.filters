@@ -27,6 +27,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="frmBuscarAlumnos.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarPartidoPolitico.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmPrincipal.h">
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="frmNuevoPartidoPolitico.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmBuscarAlumnos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarPartidoPolitico.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

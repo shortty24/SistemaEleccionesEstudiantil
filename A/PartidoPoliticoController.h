@@ -1,6 +1,8 @@
 #pragma once
 
-namespace SistemaEleccionesEstudiantilController {
+namespace SistemaEleccionesEstudiantilController{
+	
+	using namespace System;
 	using namespace System::Collections::Generic;
 	using namespace SistemaEleccionesEstudiantilModel;
 
@@ -14,6 +16,12 @@ namespace SistemaEleccionesEstudiantilController {
 		void CargarPartidosDesdeArchivo();
 		List<Alumno^>^ BuscarAlumnosPartidoPolitico(int codigoPartido);
 		int ObtenerCantidadPartidos();
-		PartidoPolitico^ ObtenerPartidoLista(int indice); 
+		PartidoPolitico^ ObtenerPartidoLista(int indice);
+		void GuardarPartidoPoliticoEnArchivo(PartidoPolitico^ objPartido);
+		List<PartidoPolitico^>^ obtenerListaPartidos();
+		List<PartidoPolitico^>^ buscarPartidos(String^ nombreBuscar);
+		void eliminarPartidoPolitico(int codigoPartidoEliminar);
+		PartidoPolitico^ buscarPartidoPoliticoxCodigo(int codigoPartido);
+		void EditarPartidoPolitico(int codigoPartidoEditar, List<Alumno^>^ listaMiembros);
 	};
 } 

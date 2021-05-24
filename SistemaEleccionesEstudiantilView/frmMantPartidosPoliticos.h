@@ -1,4 +1,6 @@
 #pragma once
+#include "frmNuevoPartidoPolitico.h"
+#include "frmEditarPartidoPolitico.h"
 
 namespace SistemaEleccionesEstudiantilView {
 
@@ -93,18 +95,19 @@ namespace SistemaEleccionesEstudiantilView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(317, 47);
+			this->button1->Location = System::Drawing::Point(348, 44);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantPartidosPoliticos::button1_Click);
 			// 
 			// textBox1
 			// 
 			this->textBox1->Location = System::Drawing::Point(108, 47);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(159, 20);
+			this->textBox1->Size = System::Drawing::Size(217, 20);
 			this->textBox1->TabIndex = 1;
 			// 
 			// label1
@@ -156,6 +159,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Nuevo";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmMantPartidosPoliticos::button2_Click);
 			// 
 			// button3
 			// 
@@ -165,6 +169,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantPartidosPoliticos::button3_Click);
 			// 
 			// button4
 			// 
@@ -199,9 +204,30 @@ namespace SistemaEleccionesEstudiantilView {
 	private: System::Void frmMantPartidosPoliticos_Load(System::Object^ sender, System::EventArgs^ e) {
 		PartidoPoliticoController^ gestorPartidoPolitico = gcnew PartidoPoliticoController();
 		gestorPartidoPolitico->CargarPartidosDesdeArchivo();
+		List<PartidoPolitico^>^ objListaPartidos = gestorPartidoPolitico->obtenerListaPartidos();
+		mostrarGrilla(objListaPartidos);
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
+		int codigoPartidoEliminar = Convert::ToInt32(this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+		PartidoPoliticoController^ objGestorPartido = gcnew PartidoPoliticoController();
+		objGestorPartido->eliminarPartidoPolitico(codigoPartidoEliminar);
+		objGestorPartido->CargarPartidosDesdeArchivo();
+		List<PartidoPolitico^>^ listaPartidos = objGestorPartido->obtenerListaPartidos();
+		mostrarGrilla(listaPartidos);
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmNuevoPartidoPolitico^ ventanaNuevoPartido = gcnew frmNuevoPartidoPolitico();
+		ventanaNuevoPartido->ShowDialog();
+		PartidoPoliticoController^ gestorPartidoPolitico = gcnew PartidoPoliticoController();
+		gestorPartidoPolitico->CargarPartidosDesdeArchivo();
+		List<PartidoPolitico^>^ objListaPartidos = gestorPartidoPolitico->obtenerListaPartidos();
+		mostrarGrilla(objListaPartidos);
+	}
+	private: void mostrarGrilla(List<PartidoPolitico^>^ ListaPartidos) {
 		this->dataGridView1->Rows->Clear();
-		for (int i = 0; i < gestorPartidoPolitico->ObtenerCantidadPartidos(); i++) {
-			PartidoPolitico^ objPartido = gestorPartidoPolitico->ObtenerPartidoLista(i);
+		for (int i = 0; i < ListaPartidos->Count; i++) {
+			PartidoPolitico^ objPartido = ListaPartidos[i];
 			array<String^>^ fila = gcnew array<String^>(4);
 			fila[0] = Convert::ToString(objPartido->codigo);
 			fila[1] = objPartido->nombre;
@@ -210,7 +236,28 @@ namespace SistemaEleccionesEstudiantilView {
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ nombreBuscar = this->textBox1->Text;
+	List<PartidoPolitico^>^ listaPartidos;
+	PartidoPoliticoController^ objGestorPartido = gcnew PartidoPoliticoController();
+	if (nombreBuscar == "") {
+		objGestorPartido->CargarPartidosDesdeArchivo();
+		listaPartidos = objGestorPartido->obtenerListaPartidos();
 	}
+	else {
+		listaPartidos = objGestorPartido->buscarPartidos(nombreBuscar);
+	}
+	mostrarGrilla(listaPartidos);
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
+	int codigoPartidoEditar = Convert::ToInt32(this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+	frmEditarPartidoPolitico^ ventanaEditarPartido = gcnew frmEditarPartidoPolitico(codigoPartidoEditar);
+	ventanaEditarPartido->ShowDialog(); 
+	PartidoPoliticoController^ gestorPartidoPolitico = gcnew PartidoPoliticoController();
+	gestorPartidoPolitico->CargarPartidosDesdeArchivo();
+	List<PartidoPolitico^>^ objListaPartidos = gestorPartidoPolitico->obtenerListaPartidos();
+	mostrarGrilla(objListaPartidos);
+}
 };
 }
