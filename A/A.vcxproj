@@ -118,10 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlumnoController.h" />
+    <ClInclude Include="ListaElectoralController.h" />
     <ClInclude Include="PartidoPoliticoController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlumnoController.cpp" />
+    <ClCompile Include="ListaElectoralController.cpp" />
     <ClCompile Include="PartidoPoliticoController.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

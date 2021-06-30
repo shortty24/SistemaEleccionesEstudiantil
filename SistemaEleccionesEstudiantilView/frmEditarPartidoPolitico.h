@@ -199,6 +199,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->groupBox1->TabIndex = 5;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del Partido Político";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmEditarPartidoPolitico::groupBox1_Enter);
 			// 
 			// textBox4
 			// 
@@ -338,6 +339,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	objGestorPartido->EditarPartidoPolitico(this->codigoPartidoEditar, this->listaMiembros);
 	MessageBox::Show("El partido político ha sido editar con éxito");
 	this->Close();
+}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

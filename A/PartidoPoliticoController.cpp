@@ -7,7 +7,6 @@ using namespace System::IO;	/*Este es el namesapce que permite manipular las cla
 
 PartidoPoliticoController::PartidoPoliticoController() {
 	this->listaPartidosPoliticos = gcnew List<PartidoPolitico^>();
-
 }
 
 void PartidoPoliticoController::CargarPartidosDesdeArchivo() {
@@ -15,7 +14,7 @@ void PartidoPoliticoController::CargarPartidosDesdeArchivo() {
 	array<String^>^ lineas = File::ReadAllLines("partidosPoliticos.txt");
 
 	String^ separadores = ";";
-	for each (String ^ lineaPartidoPolitico in lineas) {
+	for each (String^ lineaPartidoPolitico in lineas) {
 		array<String^>^ palabras = lineaPartidoPolitico->Split(separadores->ToCharArray());	
 		int codigoPartido = Convert::ToInt32(palabras[0]);
 		String^ nombrePartido = palabras[1];
@@ -24,7 +23,7 @@ void PartidoPoliticoController::CargarPartidosDesdeArchivo() {
 		PartidoPolitico^ objPartido = gcnew PartidoPolitico(codigoPartido, nombrePartido, simbolo, fechaFundacion);
 		List<Alumno^>^ listaAlumnosPartido = BuscarAlumnosPartidoPolitico(codigoPartido);
 		objPartido->listaAlumnos = listaAlumnosPartido;
-		this->listaPartidosPoliticos->Add(objPartido);
+		this->listaPartidosPoliticos->Add(objPartido);	
 	}
 }
 

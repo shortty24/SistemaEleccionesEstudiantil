@@ -1,0 +1,2 @@
+#include "frmBuscarAlumnoPartido.h"
+

@@ -21,12 +21,18 @@
     <ClInclude Include="AlumnoController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ListaElectoralController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PartidoPoliticoController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AlumnoController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaElectoralController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

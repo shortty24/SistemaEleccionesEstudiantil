@@ -237,6 +237,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmBuscarAlumnos";
 			this->Text = L"frmBuscarAlumnos";
+			this->Load += gcnew System::EventHandler(this, &frmBuscarAlumnos::frmBuscarAlumnos_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -320,5 +321,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("El alumno ya pertenece a la lista de miembros de otro partido");
 	}
 }	
+private: System::Void frmBuscarAlumnos_Load(System::Object^ sender, System::EventArgs^ e) {
+	
+}
 };
 }

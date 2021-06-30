@@ -128,21 +128,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="frmBuscarAlumnoPartido.cpp" />
     <ClCompile Include="frmBuscarAlumnos.cpp" />
+    <ClCompile Include="frmBuscarPartido.cpp" />
     <ClCompile Include="frmEditarPartidoPolitico.cpp" />
+    <ClCompile Include="frmMantListaElectoral.cpp" />
     <ClCompile Include="frmMantPartidosPoliticos.cpp" />
+    <ClCompile Include="frmNuevaLista.cpp" />
     <ClCompile Include="frmNuevoPartidoPolitico.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmVerLista.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frmBuscarAlumnoPartido.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmBuscarAlumnos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmBuscarPartido.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEditarPartidoPolitico.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmMantListaElectoral.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmMantPartidosPoliticos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmNuevaLista.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmNuevoPartidoPolitico.h">
@@ -151,22 +168,40 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmVerLista.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmBuscarAlumnoPartido.resx">
+      <DependentUpon>frmBuscarAlumnoPartido.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarAlumnos.resx">
       <DependentUpon>frmBuscarAlumnos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarPartido.resx">
+      <DependentUpon>frmBuscarPartido.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarPartidoPolitico.resx">
       <DependentUpon>frmEditarPartidoPolitico.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMantListaElectoral.resx">
+      <DependentUpon>frmMantListaElectoral.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMantPartidosPoliticos.resx">
       <DependentUpon>frmMantPartidosPoliticos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevaLista.resx">
+      <DependentUpon>frmNuevaLista.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoPartidoPolitico.resx">
       <DependentUpon>frmNuevoPartidoPolitico.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVerLista.resx">
+      <DependentUpon>frmVerLista.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

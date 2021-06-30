@@ -268,6 +268,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmNuevoPartidoPolitico";
 			this->Text = L"frmNuevoPartidoPolitico";
+			this->Load += gcnew System::EventHandler(this, &frmNuevoPartidoPolitico::frmNuevoPartidoPolitico_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -325,6 +326,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	objGestorPartido->GuardarPartidoPoliticoEnArchivo(objPartidoPolitico);
 	MessageBox::Show("El partido político ha sido guardado con éxito");
 	this->Close();
+}
+private: System::Void frmNuevoPartidoPolitico_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

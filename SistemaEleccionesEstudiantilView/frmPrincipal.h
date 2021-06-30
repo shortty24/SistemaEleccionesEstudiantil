@@ -1,6 +1,7 @@
 #pragma once
 
 #include "frmMantPartidosPoliticos.h"
+#include "frmMantListaElectoral.h"
 
 namespace SistemaEleccionesEstudiantilView {
 
@@ -95,15 +96,16 @@ namespace SistemaEleccionesEstudiantilView {
 			// partidosPolíticosToolStripMenuItem
 			// 
 			this->partidosPolíticosToolStripMenuItem->Name = L"partidosPolíticosToolStripMenuItem";
-			this->partidosPolíticosToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->partidosPolíticosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->partidosPolíticosToolStripMenuItem->Text = L"Partidos Políticos";
 			this->partidosPolíticosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::partidosPolíticosToolStripMenuItem_Click);
 			// 
 			// listaElectoralToolStripMenuItem
 			// 
 			this->listaElectoralToolStripMenuItem->Name = L"listaElectoralToolStripMenuItem";
-			this->listaElectoralToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->listaElectoralToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->listaElectoralToolStripMenuItem->Text = L"Listas Electorales";
+			this->listaElectoralToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::listaElectoralToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
@@ -131,7 +133,13 @@ namespace SistemaEleccionesEstudiantilView {
 		ventanaMantPartidosPoliticos->MdiParent = this; //this: permite representar a la misma clase
 		ventanaMantPartidosPoliticos->Show();
 	}
-private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void listaElectoralToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmMantListaElectoral^ ventanaMantListaElectoral = gcnew frmMantListaElectoral();
+
+		ventanaMantListaElectoral->MdiParent = this;
+		ventanaMantListaElectoral->Show();
+	}
 };
 }
