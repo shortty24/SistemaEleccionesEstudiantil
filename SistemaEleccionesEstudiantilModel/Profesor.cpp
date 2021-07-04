@@ -2,7 +2,6 @@
 
 using namespace SistemaEleccionesEstudiantilModel;
 
-Profesor::Profesor(String^ codigo, String^ perfil) :Persona(nombre, apellidoPaterno, apellidoMaterno, genero) {
-	this->codigo = codigo;
+Profesor::Profesor(String^ dni, String^ nombre, String^ apellidoPaterno, String^ apellidoMaterno, String^ genero, String^ perfil):Persona(dni, nombre, apellidoPaterno, apellidoMaterno, genero){
 	this->perfil = perfil;
 }

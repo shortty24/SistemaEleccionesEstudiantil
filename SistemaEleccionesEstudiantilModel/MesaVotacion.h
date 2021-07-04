@@ -15,6 +15,6 @@ namespace SistemaEleccionesEstudiantilModel {
 			List<Profesor^>^ objListaMiembrosMesa;
 		public:
 			//MesaVotacion();
-			MesaVotacion(int codigo, int nroMesa, int nroAula, List<Alumno^>^ objListaElectores, List<Profesor^>^ objListaMiembrosMesa);
+			MesaVotacion(int codigo, int nroMesa, int nroAula);
 	};
 }

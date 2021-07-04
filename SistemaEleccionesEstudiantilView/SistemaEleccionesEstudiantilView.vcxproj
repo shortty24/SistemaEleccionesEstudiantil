@@ -132,11 +132,14 @@
     <ClCompile Include="frmBuscarAlumnos.cpp" />
     <ClCompile Include="frmBuscarPartido.cpp" />
     <ClCompile Include="frmEditarPartidoPolitico.cpp" />
+    <ClCompile Include="frmLogin.cpp" />
     <ClCompile Include="frmMantListaElectoral.cpp" />
     <ClCompile Include="frmMantPartidosPoliticos.cpp" />
     <ClCompile Include="frmNuevaLista.cpp" />
     <ClCompile Include="frmNuevoPartidoPolitico.cpp" />
+    <ClCompile Include="frmNuevoVoto.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmRegistrarResultados.cpp" />
     <ClCompile Include="frmVerLista.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -153,6 +156,9 @@
     <ClInclude Include="frmEditarPartidoPolitico.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmLogin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmMantListaElectoral.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -165,7 +171,13 @@
     <ClInclude Include="frmNuevoPartidoPolitico.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmNuevoVoto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmPrincipal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarResultados.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmVerLista.h">
@@ -185,6 +197,9 @@
     <EmbeddedResource Include="frmEditarPartidoPolitico.resx">
       <DependentUpon>frmEditarPartidoPolitico.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMantListaElectoral.resx">
       <DependentUpon>frmMantListaElectoral.h</DependentUpon>
     </EmbeddedResource>
@@ -197,8 +212,14 @@
     <EmbeddedResource Include="frmNuevoPartidoPolitico.resx">
       <DependentUpon>frmNuevoPartidoPolitico.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoVoto.resx">
+      <DependentUpon>frmNuevoVoto.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrarResultados.resx">
+      <DependentUpon>frmRegistrarResultados.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVerLista.resx">
       <DependentUpon>frmVerLista.h</DependentUpon>

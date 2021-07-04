@@ -284,7 +284,7 @@ private: void mostrarGrilla(List<Alumno^>^ listaAlumnos) {
 	for (int i = 0; i < listaAlumnos->Count; i++) {
 		Alumno^ objAlumno = listaAlumnos[i]; 
 		array<String^>^ fila = gcnew array<String^>(5);
-		fila[0] = Convert::ToString(objAlumno->codigo);
+		fila[0] = Convert::ToString(objAlumno->dni);
 		fila[1] = objAlumno->nombre + " " + objAlumno->apellidoPaterno + " " + objAlumno->apellidoMaterno;
 		fila[2] = objAlumno->nivel;
 		fila[3] = Convert::ToString(objAlumno->grado);
@@ -303,7 +303,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		int esta_repetido = 0;
 		for (int i = 0; i < this->listaMiembros->Count; i++) {
 			Alumno^ objAlumno = this->listaMiembros[i];
-			if (objAlumno->codigo == codigoAlumnoSeleccionado) {
+			if (objAlumno->dni == codigoAlumnoSeleccionado) {
 				esta_repetido = 1;
 				break;
 			}

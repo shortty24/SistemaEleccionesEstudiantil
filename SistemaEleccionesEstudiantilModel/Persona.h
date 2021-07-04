@@ -6,6 +6,7 @@ namespace SistemaEleccionesEstudiantilModel{
 
 	public ref class Persona {
 		public:
+			String^ dni;
 			String^ nombre;
 			String^ apellidoPaterno;
 			String^ apellidoMaterno;
@@ -14,6 +15,6 @@ namespace SistemaEleccionesEstudiantilModel{
 		public:
 			//Persona();
 			Persona(String^ nombre, String^ apellidoPaterno, String^ apellidoMaterno, String^ genero);
-
+			Persona(String^ dni, String^ nombre, String^ apellidoPaterno, String^ apellidoMaterno, String^ genero);
 	};
 }

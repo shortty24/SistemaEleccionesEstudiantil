@@ -7,6 +7,41 @@ using namespace System::IO;	/*Este es el namesapce que permite manipular las cla
 
 PartidoPoliticoController::PartidoPoliticoController() {
 	this->listaPartidosPoliticos = gcnew List<PartidoPolitico^>();
+	this->objConexion = gcnew SqlConnection();
+}
+
+void PartidoPoliticoController::AbrirConexion() {
+	/*La cadena conexion está compuesto de: Servidor BD, nombre de BD, usuario de BD y contraseña de BD*/
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20165855;User ID=a20165855;Password=h7b3EJcM;";
+	this->objConexion->Open(); /*Ya establecí la conexión con la BD*/
+}
+
+void PartidoPoliticoController::CerrarConexion() {
+	this->objConexion->Close();
+}
+
+List<PartidoPolitico^>^ PartidoPoliticoController::buscarPartidosBD() {
+	AlumnoController^ objGestorAlumno = gcnew AlumnoController();
+	List<PartidoPolitico^>^ listaPartidosPoliticos = gcnew List<PartidoPolitico^>();
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from PartidoPolitico;";
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza el ExecuteReader*/
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		String^ nombre = safe_cast<String^>(objData[1]);
+		String^ simbolo = safe_cast<String^>(objData[2]);
+		String^ fecha = safe_cast<String^>(objData[3]);
+
+		PartidoPolitico^ objPartido = gcnew PartidoPolitico(codigo, nombre, simbolo, fecha);
+		objPartido->listaAlumnos = objGestorAlumno->buscarAlumnosxPartido(codigo);
+		listaPartidosPoliticos->Add(objPartido);
+	}
+	objData->Close();
+	CerrarConexion();
+
+	return listaPartidosPoliticos;
 }
 
 void PartidoPoliticoController::CargarPartidosDesdeArchivo() {
@@ -70,7 +105,7 @@ void PartidoPoliticoController::GuardarPartidoPoliticoEnArchivo(PartidoPolitico^
 		PartidoPolitico^ objPartidoGrabar = this->listaPartidosPoliticos[i];
 		for (int j = 0; j < objPartidoGrabar->listaAlumnos->Count; j++) {
 			Alumno^ objAlumno = objPartidoGrabar->listaAlumnos[j];
-			lineasArchivo[k] = objAlumno->codigo + ";" + objPartidoGrabar->codigo;
+			lineasArchivo[k] = objAlumno->dni + ";" + objPartidoGrabar->codigo;
 			k++;
 		}
 	}
@@ -134,7 +169,7 @@ void PartidoPoliticoController::eliminarPartidoPolitico(int codigoPartidoElimina
 		PartidoPolitico^ objPartidoGrabar = this->listaPartidosPoliticos[i];
 		for (int j = 0; j < objPartidoGrabar->listaAlumnos->Count; j++) {
 			Alumno^ objAlumno = objPartidoGrabar->listaAlumnos[j];
-			lineasArchivo[k] = objAlumno->codigo + ";" + objPartidoGrabar->codigo;
+			lineasArchivo[k] = objAlumno->dni + ";" + objPartidoGrabar->codigo;
 			k++;
 		}
 	}
@@ -195,7 +230,7 @@ void PartidoPoliticoController::EditarPartidoPolitico(int codigoPartidoEditar, L
 		PartidoPolitico^ objPartidoGrabar = this->listaPartidosPoliticos[i];
 		for (int j = 0; j < objPartidoGrabar->listaAlumnos->Count; j++) {
 			Alumno^ objAlumno = objPartidoGrabar->listaAlumnos[j];
-			lineasArchivo[k] = objAlumno->codigo + ";" + objPartidoGrabar->codigo;
+			lineasArchivo[k] = objAlumno->dni + ";" + objPartidoGrabar->codigo;
 			k++;
 		}
 	}

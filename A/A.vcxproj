@@ -119,12 +119,20 @@
   <ItemGroup>
     <ClInclude Include="AlumnoController.h" />
     <ClInclude Include="ListaElectoralController.h" />
+    <ClInclude Include="MesaController.h" />
     <ClInclude Include="PartidoPoliticoController.h" />
+    <ClInclude Include="ProfesorController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlumnoController.cpp" />
     <ClCompile Include="ListaElectoralController.cpp" />
+    <ClCompile Include="MesaController.cpp" />
     <ClCompile Include="PartidoPoliticoController.cpp" />
+    <ClCompile Include="ProfesorController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

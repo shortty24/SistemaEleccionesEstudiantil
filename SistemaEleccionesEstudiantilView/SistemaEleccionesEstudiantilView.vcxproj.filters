@@ -48,6 +48,15 @@
     <ClCompile Include="frmVerLista.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="frmLogin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmNuevoVoto.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistrarResultados.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmPrincipal.h">
@@ -78,6 +87,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="frmVerLista.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmLogin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevoVoto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarResultados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

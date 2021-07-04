@@ -306,7 +306,7 @@ namespace SistemaEleccionesEstudiantilView {
 		for (int i = 0; i < listaAlumnos->Count; i++) {
 			Alumno^ objAlumno = listaAlumnos[i];
 			array<String^>^ fila = gcnew array<String^>(5);
-			fila[0] = Convert::ToString(objAlumno->codigo);
+			fila[0] = Convert::ToString(objAlumno->dni);
 			fila[1] = objAlumno->nombre + " " + objAlumno->apellidoPaterno + " " + objAlumno->apellidoMaterno;
 			fila[2] = Convert::ToString(objAlumno->grado);
 			fila[3] = objAlumno->seccion;
@@ -327,7 +327,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	String^ codigoAlumnoSeleccionado = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString();
 	for (int i = 0; this->listaMiembros->Count; i++) {
 		Alumno^ objAlumno = this->listaMiembros[i];
-		if (objAlumno->codigo == codigoAlumnoSeleccionado) {
+		if (objAlumno->dni == codigoAlumnoSeleccionado) {
 			this->listaMiembros->RemoveAt(i);
 			break;
 		}

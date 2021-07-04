@@ -24,6 +24,12 @@
     <ClInclude Include="ListaElectoralController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ProfesorController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MesaController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PartidoPoliticoController.cpp">
@@ -33,6 +39,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListaElectoralController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfesorController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MesaController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
