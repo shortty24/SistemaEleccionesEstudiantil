@@ -24,5 +24,6 @@ namespace SistemaEleccionesEstudiantilController {
 		List<Alumno^>^ buscarAlumnosxMesaVotacion(int codigoMesa);
 		List<Alumno^>^ buscarAlumnosxPartido(int codigoPartido);
 		void insertarAlumno(Alumno^ objAlumno);
+		List<Alumno^>^ buscarAlumnosxListaElectoral(int codigoLista);
 	}; 
 }

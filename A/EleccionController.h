@@ -6,16 +6,16 @@ namespace SistemaEleccionesEstudiantilController {
 	using namespace System;
 	using namespace System::Data::SqlClient;
 
-	public ref class MesaController {
+	public ref class EleccionController {
 
 	public:
-		List<MesaVotacion^>^ listaMesaVotacion;
+		List<Eleccion^>^ listaElecciones;
 		SqlConnection^ objConexion;
+
 	public:
-		MesaController();
+		EleccionController();
 		void AbrirConexion();
 		void CerrarConexion();
-		MesaVotacion^ buscarMesaVotacionxAlumno(String^ dni);
-		List<MesaVotacion^>^ buscarMesasVotacionxAnho(int anho);
+		Eleccion^ buscarEleccionActiva();
 	};
 }

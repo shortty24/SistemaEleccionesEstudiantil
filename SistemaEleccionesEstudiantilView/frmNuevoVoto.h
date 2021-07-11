@@ -30,6 +30,7 @@ namespace SistemaEleccionesEstudiantilView {
 		{
 			InitializeComponent();
 			this->dni = dni;
+			this->listaElectoralElegida = nullptr;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -68,6 +69,10 @@ namespace SistemaEleccionesEstudiantilView {
 	private: System::Windows::Forms::GroupBox^ groupBox4;
 	private: System::Windows::Forms::Button^ button1;
 	private: String^ dni;
+	private: MesaVotacion^ objMesaVotacion;
+	private: List<ListaElectoral^>^ listasElectorales;
+	private: ListaElectoral^ listaElectoralElegida;
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -259,6 +264,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(183, 21);
 			this->comboBox2->TabIndex = 9;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &frmNuevoVoto::comboBox2_SelectedIndexChanged);
 			// 
 			// comboBox1
 			// 
@@ -267,6 +273,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(183, 21);
 			this->comboBox1->TabIndex = 8;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmNuevoVoto::comboBox1_SelectedIndexChanged);
 			// 
 			// label7
 			// 
@@ -294,6 +301,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->groupBox4->TabIndex = 6;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Listas Electorales";
+			this->groupBox4->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &frmNuevoVoto::groupBox4_Paint);
 			// 
 			// button1
 			// 
@@ -303,6 +311,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->button1->TabIndex = 7;
 			this->button1->Text = L"Votar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmNuevoVoto::button1_Click);
 			// 
 			// frmNuevoVoto
 			// 
@@ -317,6 +326,7 @@ namespace SistemaEleccionesEstudiantilView {
 			this->Name = L"frmNuevoVoto";
 			this->Text = L"frmNuevoVoto";
 			this->Load += gcnew System::EventHandler(this, &frmNuevoVoto::frmNuevoVoto_Load);
+			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &frmNuevoVoto::frmNuevoVoto_Paint);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -334,10 +344,11 @@ namespace SistemaEleccionesEstudiantilView {
 		Alumno^ objAlumno = objGestorAlumno->buscarAlumnoxDNI(this->dni);
 		MesaVotacion^ objMesa = objGestorMesa->buscarMesaVotacionxAlumno(this->dni);
 
+		this->objMesaVotacion = objMesa;
 		/*Para mostrar los datos de la mesa en la ventana*/
 		this->textBox1->Text = Convert::ToString(objMesa->nroMesa);
 		this->textBox2->Text = Convert::ToString(objMesa->nroAula);
-
+		
 		this->textBox4->Text = objAlumno->dni;
 		this->textBox3->Text = Convert::ToString(objAlumno->grado);
 		this->textBox6->Text = objAlumno->seccion;
@@ -350,6 +361,103 @@ namespace SistemaEleccionesEstudiantilView {
 			this->comboBox2->Items->Add(listaPartidos[i]->nombre);
 		}
 
+		ListaElectoralController^ objGestorListaElectoral = gcnew ListaElectoralController();
+		this->listasElectorales = objGestorListaElectoral->buscarListaElectorales();
+
+
+		/*Voya a caragar en el comboBox los candidatos de las listas*/
+		this->comboBox1->Items->Clear();
+		for (int i = 0; i < listasElectorales->Count; i++) {
+			ListaElectoral^ objListaElectoral = this->listasElectorales[i];		
+			for (int j = 0; j < objListaElectoral->objListaAlumnos->Count; j++) {
+				Alumno^ objAlumno = objListaElectoral->objListaAlumnos[j];
+				if (objAlumno->grado == 5 && objAlumno->nivel == "Secundaria") {
+					this->comboBox1->Items->Add(objAlumno->nombre + " "+ objAlumno->apellidoPaterno); 
+					break;
+				}
+			}
+		}
+	}
+
+	private: System::Void groupBox4_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		Graphics^ objGraphics = e->Graphics;
+		int x = 80, y = 20;
+		SolidBrush^ objBrush = gcnew SolidBrush(Color::Green);
+		SolidBrush^ objBrushTexto = gcnew SolidBrush(Color::Black);
+		SolidBrush^ objBrushRojo = gcnew SolidBrush(Color::Red);
+
+		for (int i = 0; i < this->listasElectorales->Count; i++) {
+			ListaElectoral^ objLista = this->listasElectorales[i];
+			if (this->listaElectoralElegida != nullptr) {
+				if (objLista->codigo == this->listaElectoralElegida->codigo) {
+					objGraphics->FillRectangle(objBrushRojo, x, y, 60, 40);
+				}
+				else {
+					objGraphics->FillRectangle(objBrush, x, y, 60, 40);
+				}
+			}
+			else {
+				objGraphics->FillRectangle(objBrush, x, y, 60, 40);
+			}
+			//Pen^ objLapiz = gcnew Pen(Color::Green);		
+			objGraphics->DrawString(objLista->objPartidoPolitico->simbolo, this->Font,objBrushTexto, x+20, y+5);
+			y = y + 60;
+		}
+	}
+
+private: System::Void frmNuevoVoto_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		String^ candidato = this->comboBox1->Text;
+		for (int i = 0; i < this->listasElectorales->Count; i++) {
+			ListaElectoral^ objLista = this->listasElectorales[i];
+			for (int j = 0; j < objLista->objListaAlumnos->Count; j++) {
+				Alumno^ objAlumno = objLista->objListaAlumnos[j];
+				if (objAlumno->grado == 5 && objAlumno->nivel == "Secundaria") {
+					String^ candidatoLista = objAlumno->nombre + " " + objAlumno->apellidoPaterno;
+					if (candidatoLista == candidato) {
+						this->listaElectoralElegida = objLista;
+						break;
+					}
+				}
+			}
+		}
+		this->comboBox2->Text = this->listaElectoralElegida->objPartidoPolitico->nombre;
+		this->groupBox4->Invalidate();
+	}
+
+	private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		String^ nombrePartido = this->comboBox2->Text;
+		for (int i = 0; i < this->listasElectorales->Count; i++) {
+			ListaElectoral^ objLista = this->listasElectorales[i];
+			if (objLista->objPartidoPolitico->nombre == nombrePartido) {
+				this->listaElectoralElegida = objLista;
+				break;
+			}
+		}
+
+		for (int i = 0; i < this->listaElectoralElegida->objListaAlumnos->Count; i++) {
+			Alumno^ objAlumno = this->listaElectoralElegida->objListaAlumnos[i];
+			if (objAlumno->grado == 5 && objAlumno->nivel == "Secundaria") {
+				String^ candidatoLista = objAlumno->nombre + " " + objAlumno->apellidoPaterno;
+				this->comboBox1->Text = candidatoLista;
+				break;
+			}
+		}
+		this->groupBox4->Invalidate();
+	}
+
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->listaElectoralElegida != nullptr) {
+			Voto^ objVoto = gcnew Voto(0, "07/07/2021", this->listaElectoralElegida, this->objMesaVotacion);
+			VotoController^ objGestorVoto = gcnew VotoController();
+			objGestorVoto->RegistrarVoto(objVoto);
+			MessageBox::Show("Voto registrado con éxito");
+			this->Close();
+		}
+		else {
+			MessageBox::Show("Debe elegir a un candidato o partido político");
+		}
 	}
 };
 }

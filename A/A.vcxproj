@@ -118,17 +118,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlumnoController.h" />
+    <ClInclude Include="EleccionController.h" />
     <ClInclude Include="ListaElectoralController.h" />
     <ClInclude Include="MesaController.h" />
     <ClInclude Include="PartidoPoliticoController.h" />
     <ClInclude Include="ProfesorController.h" />
+    <ClInclude Include="ResultadoController.h" />
+    <ClInclude Include="VotoController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlumnoController.cpp" />
+    <ClCompile Include="EleccionController.cpp" />
     <ClCompile Include="ListaElectoralController.cpp" />
     <ClCompile Include="MesaController.cpp" />
     <ClCompile Include="PartidoPoliticoController.cpp" />
     <ClCompile Include="ProfesorController.cpp" />
+    <ClCompile Include="ResultadoController.cpp" />
+    <ClCompile Include="VotoController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

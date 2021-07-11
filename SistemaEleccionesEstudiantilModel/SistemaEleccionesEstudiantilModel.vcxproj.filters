@@ -36,6 +36,12 @@
     <ClInclude Include="Voto.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Resultado.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Eleccion.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Voto.cpp">
@@ -57,6 +63,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="PartidoPolitico.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Resultado.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Eleccion.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

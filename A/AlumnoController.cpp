@@ -224,3 +224,30 @@ void AlumnoController::insertarAlumno(Alumno^ objAlumno) {
 	objQuery->ExecuteNonQuery();
 	CerrarConexion();
 }
+
+List<Alumno^>^ AlumnoController::buscarAlumnosxListaElectoral(int codigoLista) {
+	List<Alumno^>^ listaAlumnos = gcnew List<Alumno^>();
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select a.* from AlumnoxListaElectoral al, Alumno a" +
+							" where al.codigoLista = "+ codigoLista +" and al.dniAlumno = a.dni; ";
+
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza el ExecuteReader*/
+	while (objData->Read()) {
+		String^ dni = safe_cast<String^>(objData[0]);
+		String^ nombres = safe_cast<String^>(objData[1]);
+		String^ apellidoPaterno = safe_cast<String^>(objData[2]);
+		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
+		String^ genero = safe_cast<String^>(objData[4]);
+		int grado = safe_cast<int>(objData[5]);
+		String^ seccion = safe_cast<String^>(objData[6]);
+		String^ nivel = safe_cast<String^>(objData[7]);
+
+		Alumno^ objAlumno = gcnew Alumno(dni, nombres, apellidoPaterno, apellidoMaterno, genero, grado, seccion, nivel);
+		listaAlumnos->Add(objAlumno);
+	}
+	objData->Close();
+	CerrarConexion();
+	return listaAlumnos;
+}

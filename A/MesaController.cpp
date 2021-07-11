@@ -44,3 +44,30 @@ MesaVotacion^ MesaController::buscarMesaVotacionxAlumno(String^ dni){
 	return objMesaVotacion;
 }
 
+List<MesaVotacion^>^ MesaController::buscarMesasVotacionxAnho(int anho) {
+	List<MesaVotacion^>^ listaMesas = gcnew List<MesaVotacion^>();
+	AlumnoController^ objGestorAlumnoController = gcnew AlumnoController();
+	ProfesorController^ objGestorProfesorController = gcnew ProfesorController();
+
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from MesaVotacion where anhoEleccion =" + anho + ";";
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza el ExecuteReader*/
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		int nroMesa = safe_cast<int>(objData[1]);
+		int nroAula = safe_cast<int>(objData[2]);
+		int anhoEleccion = safe_cast<int>(objData[3]);
+
+		MesaVotacion^ objMesaVotacion = gcnew MesaVotacion(codigo, nroMesa, nroAula, anhoEleccion);
+		objMesaVotacion->objListaElectores = objGestorAlumnoController->buscarAlumnosxMesaVotacion(codigo);
+		objMesaVotacion->objListaMiembrosMesa = objGestorProfesorController->buscarProfesorxMesaVotacion(codigo);
+		
+		listaMesas->Add(objMesaVotacion);
+	}
+	objData->Close();
+	CerrarConexion();
+
+	return listaMesas;
+}

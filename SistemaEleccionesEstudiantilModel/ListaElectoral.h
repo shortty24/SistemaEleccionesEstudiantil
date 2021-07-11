@@ -13,6 +13,7 @@ namespace SistemaEleccionesEstudiantilModel {
 			List<Alumno^>^ objListaAlumnos;
 
 		public:
+			ListaElectoral();
 			ListaElectoral(int codigo, String^ anhoEleccion, PartidoPolitico^ objPartidoPolitico);
 			ListaElectoral(int codigo, String^ anhoEleccion, PartidoPolitico^ objPartidoPolitico, List<Alumno^>^ objListaAlumnos);
 	};

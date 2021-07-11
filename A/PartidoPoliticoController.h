@@ -15,7 +15,7 @@ namespace SistemaEleccionesEstudiantilController{
 	public:
 		/*Propósito del constructor: Crear espacio de memorioa o inicializar los atributos*/
 		PartidoPoliticoController();
-		/*Métdos con base de datos*/
+		/*Métodos con base de datos*/
 		void AbrirConexion();
 		void CerrarConexion();
 		List<PartidoPolitico^>^ buscarPartidosBD();

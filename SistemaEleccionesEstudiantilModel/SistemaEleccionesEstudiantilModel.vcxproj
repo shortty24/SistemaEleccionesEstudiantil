@@ -112,20 +112,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Alumno.h" />
+    <ClInclude Include="Eleccion.h" />
     <ClInclude Include="ListaElectoral.h" />
     <ClInclude Include="MesaVotacion.h" />
     <ClInclude Include="PartidoPolitico.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Profesor.h" />
+    <ClInclude Include="Resultado.h" />
     <ClInclude Include="Voto.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Alumno.cpp" />
+    <ClCompile Include="Eleccion.cpp" />
     <ClCompile Include="ListaElectoral.cpp" />
     <ClCompile Include="MesaVotacion.cpp" />
     <ClCompile Include="PartidoPolitico.cpp" />
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Profesor.cpp" />
+    <ClCompile Include="Resultado.cpp" />
     <ClCompile Include="Voto.cpp" />
   </ItemGroup>
   <ItemGroup>

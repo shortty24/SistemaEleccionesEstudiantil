@@ -11,10 +11,12 @@ namespace SistemaEleccionesEstudiantilModel {
 			int codigo;
 			int nroMesa;
 			int nroAula;
+			int anhoEleccion;
 			List<Alumno^>^ objListaElectores;
 			List<Profesor^>^ objListaMiembrosMesa;
 		public:
 			//MesaVotacion();
 			MesaVotacion(int codigo, int nroMesa, int nroAula);
+			MesaVotacion(int codigo, int nroMesa, int nroAula, int anhoEleccion);
 	};
 }

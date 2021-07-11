@@ -2,6 +2,10 @@
 
 using namespace SistemaEleccionesEstudiantilModel;
 
+ListaElectoral::ListaElectoral() {
+	this->objListaAlumnos = gcnew List<Alumno^>();
+}
+
 ListaElectoral::ListaElectoral(int codigo, String^ anhoEleccion, PartidoPolitico^ objPartidoPolitico) {
 	this->codigo = codigo;
 	this->anhoEleccion = anhoEleccion;
